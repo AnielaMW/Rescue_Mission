@@ -1,0 +1,12 @@
+_ - Complete setup
+_ - Read User Stories
+_ - Prepare Schema
+  _ - plan tables
+  _ - plan columns
+  _ - plan database validations
+  _ - draw ER diagram
+_ - Create Migrations to the database
+  _ - create migration
+  _ - write migration
+  _ - migrate - rollback - migrate
+_ - Review work and refactor as needed
