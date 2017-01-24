@@ -1,0 +1,25 @@
+X - Complete setup
+X - Read User Stories
+X - Prepare Schema
+  X - plan tables
+  X - plan columns
+  X - plan database validations
+  X - draw ER diagram
+  * users(has_many :questions, has_many :answers)
+    * id
+    * name
+  * questions(belongs_to :user, has_many :answers)
+    * id
+    * user_id(null false)
+    * title(null false, min. 40 chars)
+    * description(null false, min. 150 chars)
+  * answers(belongs_to :user, belongs_to :question)
+    * id
+    * question_id(null false)
+    * user_id(null false)
+    * description(null false, min. 50 chars)
+_ - Create Migrations to the database
+  _ - create migration
+  _ - write migration
+  _ - migrate - rollback - migrate
+_ - Review work and refactor as needed

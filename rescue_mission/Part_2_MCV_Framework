@@ -1,0 +1,6 @@
+_ - Update Routes for each table
+_ - Create Models for each Route
+  _ - Create Associations
+  _ - Create Validations
+_ - Create Controller for each Model
+_ - Create initial Views for each Controller
