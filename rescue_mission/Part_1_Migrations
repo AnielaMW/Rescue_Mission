@@ -18,8 +18,8 @@ X - Prepare Schema
     * question_id(null false)
     * user_id(null false)
     * description(null false, min. 50 chars)
-_ - Create Migrations to the database
-  _ - create migration
-  _ - write migration
-  _ - migrate - rollback - migrate
-_ - Review work and refactor as needed
+X - Create Migrations to the database
+  X - create migration
+  X - write migration
+  X - migrate - rollback - migrate
+X - Review work and refactor as needed
