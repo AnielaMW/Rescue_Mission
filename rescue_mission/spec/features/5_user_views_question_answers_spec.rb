@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "User views answers to a posted question" do
   # As a user

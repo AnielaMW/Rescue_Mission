@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "User writes question and answer in markdown" do
   # As a user

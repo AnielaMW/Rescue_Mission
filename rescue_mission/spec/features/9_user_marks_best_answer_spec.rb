@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "User marks answer as best answer" do
   # As a user

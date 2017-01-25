@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "Authorized-user edits a question" do
   # As a user
