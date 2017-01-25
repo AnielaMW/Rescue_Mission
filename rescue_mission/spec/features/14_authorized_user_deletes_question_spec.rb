@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "Authorized-user deletes a question" do
   # As a user

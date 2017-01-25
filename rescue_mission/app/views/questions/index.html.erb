@@ -1,0 +1,9 @@
+<h1>List of Questions</h1>
+
+<div id="qulist">
+  <ul>
+    <% @questions.each do |question| %>
+      <li><%= question.title %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "User creates an answer" do
   # As a user

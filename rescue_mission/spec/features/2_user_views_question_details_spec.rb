@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "User views details of a posted question" do
   # As a user
