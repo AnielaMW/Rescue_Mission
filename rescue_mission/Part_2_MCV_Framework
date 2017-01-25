@@ -2,13 +2,13 @@ X - Update Routes for each table
   * Users
   * Questions
   * Answers
-_ - Create Models for each Route
-  _ - Create Associations
-  _ - Create Validations
+X - Create Models for each Route
+  X - Create Associations
+  X - Create Validations
   * Users
   * Questions
   * Answers
-_ - Create Controller for each Model
+X - Create Controller for each Model
   * User
   * Question
   * Answer
