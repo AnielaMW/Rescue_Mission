@@ -1,6 +1,30 @@
-_ - Update Routes for each table
-_ - Create Models for each Route
-  _ - Create Associations
-  _ - Create Validations
-_ - Create Controller for each Model
-_ - Create initial Views for each Controller
+X - Update Routes for each table
+  * Users
+  * Questions
+  * Answers
+X - Create Models for each Route
+  X - Create Associations
+  X - Create Validations
+  * Users
+  * Questions
+  * Answers
+X - Create Controller for each Model
+  * User
+  * Question
+  * Answer
+X - Create initial Views for each Controller
+  * User
+    * index
+    * show
+  * Question
+    * index
+    * show
+    * new
+    * edit
+    * _form
+  * Answer
+    * index
+    * show
+    * new
+    * edit
+    * _form
