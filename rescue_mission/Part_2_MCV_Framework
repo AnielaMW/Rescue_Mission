@@ -12,17 +12,19 @@ X - Create Controller for each Model
   * User
   * Question
   * Answer
-_ - Create initial Views for each Controller
+X - Create initial Views for each Controller
   * User
     * index
     * show
   * Question
     * index
     * show
-    * create
+    * new
     * edit
+    * _form
   * Answer
     * index
     * show
-    * create
+    * new
     * edit
+    * _form
