@@ -10,6 +10,35 @@ feature "User creates an answer" do
   # - I must provide a description that is at least 50 characters long
   # - I must be presented with errors if I fill out the form incorrectly
 
-  pending "successfully create an answer"
-  pending "fail to create an answer with invalid information"
+  scenario "successfully create an answer" do
+    user = FactoryGirl.create(:user)
+    question = FactoryGirl.create(:question)
+    new_answer = {description: "Always look on the bright side of life. Always look on the right side of life."}
+
+    visit "/questions/#{question[:id]}"
+    click_link "Create New Answer"
+
+    expect(page).to have_current_path("/questions/#{question[:id]}/answers/new")
+
+    fill_in "Description", :with => "#{new_answer[:description]}"
+    click_on 'Create Answer'
+
+    # expect(page).to have_current_path("/question/#{question[:id]}")
+    # expect(page).to have_content(question[:title])
+    expect(page).to have_content(new_answer[:description])
+  end
+
+  scenario "fail to create an answer with invalid information" do
+    user = FactoryGirl.create(:user)
+    question = FactoryGirl.create(:question)
+    invalid_answer = {description: "Lifes a piece of shit when you look at it."}
+
+    visit "/questions/#{question[:id]}"
+    click_link "Create New Answer"
+    fill_in "Description", :with => "#{invalid_answer[:description]}"
+    click_on 'Create Answer'
+
+    expect(page).to have_content("errors prohibited this answer from being saved:")
+    expect(page).to have_content("Description is too short (minimum is 50 characters)")
+  end
 end

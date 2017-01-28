@@ -3,7 +3,12 @@
 <div id="qulist">
   <ul>
     <% @questions.each do |question| %>
-      <li><%= question.title %></li>
+      <li>
+        <%= link_to question.title, question %>
+        <%= link_to 'Delete', question, method: :delete %>
+      </li>
     <% end %>
   </ul>
 </div>
+
+<%= link_to 'Ask New Question', new_question_path %>

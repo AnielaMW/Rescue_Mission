@@ -1,0 +1,20 @@
+<h1><%= @question.title %></h1>
+
+<%= link_to 'Edit Question', edit_question_path %>
+<%= link_to 'Delete', @question, method: :delete %>
+
+<p><%= @question.description %></p>
+
+<%= link_to 'Create New Answer', new_question_answer_path(@question[:id]) %>
+
+<div id="anlist">
+  <ul>
+    <% @question.answers.order(:id).each do |answer| %>
+      <li>
+        <%= answer.user.name %> says: <%= answer.description %>
+        <%= link_to "Edit Answer", edit_answer_path %>
+        <%= link_to "Delete Answer", answer, method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+</div>
