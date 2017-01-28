@@ -10,5 +10,14 @@ feature "User views details of a posted question" do
   # - I must see the question's title
   # - I must see the question's description
 
-  pending "successfully view details of a posted question"
+  scenario "successfully view details of a posted question" do
+    question = FactoryGirl.create(:question)
+
+    visit "questions#index"
+    click_link question.title
+
+    expect(page).to have_current_path("/questions/#{question.id}")
+    expect(page).to have_content(question.title)
+    expect(page).to have_content(question.description)
+  end
 end
