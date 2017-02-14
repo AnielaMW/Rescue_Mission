@@ -15,10 +15,11 @@ feature "User creates a question" do
     question = FactoryGirl.create(:question)
     new_question = {title: "How do I attend a wedding full of Drumpfs?", description: "I am attending a cousin's wedding; a cousin and family I don't particularly like. They are all misinformed, redneck, Drumpfster SOBs. How do I keep my cool when they try to lecture me on my liberal ideals?"}
 
-    visit "questions#index"
+    sign_in user
+    visit root_path
     click_link "Ask New Question"
 
-    expect(page).to have_current_path("/questions/new")
+    expect(page).to have_current_path(new_question_path)
 
     fill_in "Title", :with => "#{new_question[:title]}"
     fill_in "Description", :with => "#{new_question[:description]}"
@@ -27,7 +28,7 @@ feature "User creates a question" do
     expect(page).to have_content(new_question[:title])
     expect(page).to have_content(new_question[:description])
 
-    visit "questions#index"
+    visit root_path
 
     questions = page.all("div#qulist ul li")
     expect(questions[0]).to have_content(new_question[:title])
@@ -38,12 +39,14 @@ feature "User creates a question" do
     user = FactoryGirl.create(:user)
     invalid_question = {title: "Why?", description: "Why, for God's sake; Why?"}
 
-    visit "questions#index"
+    sign_in user
+    visit root_path
     click_link "Ask New Question"
     fill_in "Title", :with => "#{invalid_question[:title]}"
     fill_in "Description", :with => "#{invalid_question[:description]}"
     click_on 'Create Question'
 
+    expect(page).to have_current_path(questions_path)
     expect(page).to have_content("errors prohibited this question from being saved:")
     expect(page).to have_content("Title is too short (minimum is 40 characters)")
     expect(page).to have_content("Description is too short (minimum is 150 characters)")

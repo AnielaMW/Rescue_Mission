@@ -10,5 +10,6 @@ feature "User writes question and answer in markdown" do
   # - Questions and answers, when shown, should be the HTML rendered from the markdown
 
   pending "successfully write question in markdown"
+
   pending "successfully write answer in markdown"
 end

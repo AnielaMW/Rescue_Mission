@@ -15,7 +15,7 @@ feature "User views answers to a posted question" do
     answer1 = FactoryGirl.create(:answer, question: question)
     answer2 = FactoryGirl.create(:answer, question: question)
 
-    visit "/questions/#{question.id}"
+    visit question_path(question.id)
 
     answers = page.all("div#anlist ul li")
     expect(answers[0]).to have_content(answer1.user.name)

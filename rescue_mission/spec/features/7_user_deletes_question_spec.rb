@@ -13,27 +13,27 @@ feature "User deletes a question" do
   scenario "successfully delete a question from questions/index page" do
     question = FactoryGirl.create(:question)
 
-    visit 'questions#index'
+    visit questions_path
     click_link 'Delete'
 
-    expect(page).to have_current_path("/questions")
+    expect(page).to have_current_path(questions_path)
     expect(page).not_to have_content(question.title)
   end
 
   scenario "successfully delete a question from questions/show page" do
     question = FactoryGirl.create(:question)
 
-    visit "/questions/#{question[:id]}"
+    visit question_path(question[:id])
     click_link 'Delete'
 
-    expect(page).to have_current_path("/questions")
+    expect(page).to have_current_path(questions_path)
     expect(page).not_to have_content(question.title)
   end
 
-  scenario "successfully delete answers when assocciated question is deleted" do
+  pending "successfully delete answers when assocciated question is deleted" do
     answer = FactoryGirl.create(:answer)
 
-    visit 'questions#index'
+    visit questions_path
     click_link 'Delete'
 
     expect(page).to have_content("How do I test for information in the database without it needing to be found on the website?")

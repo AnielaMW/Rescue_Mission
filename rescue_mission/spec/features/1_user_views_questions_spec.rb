@@ -13,7 +13,7 @@ feature "User views list of posted questions" do
     question1 = FactoryGirl.create(:question)
     question2 = FactoryGirl.create(:question)
 
-    visit "questions#index"
+    visit questions_path
 
     questions = page.all("div#qulist ul li")
     expect(questions[0]).to have_content(question2.title)
