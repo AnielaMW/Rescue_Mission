@@ -13,10 +13,10 @@ feature "User views details of a posted question" do
   scenario "successfully view details of a posted question" do
     question = FactoryGirl.create(:question)
 
-    visit "questions#index"
+    visit questions_path
     click_link question.title
 
-    expect(page).to have_current_path("/questions/#{question.id}")
+    expect(page).to have_current_path(question_path(question.id))
     expect(page).to have_content(question.title)
     expect(page).to have_content(question.description)
   end

@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   before_action :set_question, only: [:new, :create]
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :find_question, only: [:show]
 
   def index
     @answers = Answer.all.order(:id)
@@ -17,8 +18,7 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.new(answer_params.merge({question_id: "#{@question[:id]}"}))
-
+    @answer = Answer.new(answer_params.merge({question_id: "#{@question.id}", user_id: "#{current_user.id}"}))
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
@@ -58,6 +58,10 @@ class AnswersController < ApplicationController
 
     def set_answer
       @answer = Answer.find(params[:id])
+    end
+
+    def find_question
+      @question = @answer.question
     end
 
     def answer_params

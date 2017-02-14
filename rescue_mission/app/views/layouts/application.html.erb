@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <h4>signed-in as <%= current_user.email %></h4>
+      <h4><%= link_to "Logout", destroy_user_session_path %></h4>
+    <% else %>
+      <h4>You are not logged-in</h4>
+      <%= link_to "Sign-in", new_user_session_path %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

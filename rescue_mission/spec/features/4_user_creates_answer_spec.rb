@@ -15,16 +15,16 @@ feature "User creates an answer" do
     question = FactoryGirl.create(:question)
     new_answer = {description: "Always look on the bright side of life. Always look on the right side of life."}
 
-    visit "/questions/#{question[:id]}"
+    sign_in user
+    visit question_path(question[:id])
     click_link "Create New Answer"
 
-    expect(page).to have_current_path("/questions/#{question[:id]}/answers/new")
+    expect(page).to have_current_path(new_question_answer_path(question[:id]))
 
     fill_in "Description", :with => "#{new_answer[:description]}"
     click_on 'Create Answer'
 
-    # expect(page).to have_current_path("/question/#{question[:id]}")
-    # expect(page).to have_content(question[:title])
+    expect(page).to have_content(question[:title])
     expect(page).to have_content(new_answer[:description])
   end
 
@@ -33,12 +33,13 @@ feature "User creates an answer" do
     question = FactoryGirl.create(:question)
     invalid_answer = {description: "Lifes a piece of shit when you look at it."}
 
-    visit "/questions/#{question[:id]}"
+    sign_in user
+    visit question_path(question[:id])
     click_link "Create New Answer"
     fill_in "Description", :with => "#{invalid_answer[:description]}"
     click_on 'Create Answer'
 
-    expect(page).to have_content("errors prohibited this answer from being saved:")
+    expect(page).to have_content("error prohibited this answer from being saved:")
     expect(page).to have_content("Description is too short (minimum is 50 characters)")
   end
 end
